@@ -97,4 +97,16 @@ impl FinData {
     pub fn get_call_arguments(&self) -> &HashMap<String, String> {
         &self.call_arguments
     }
+    pub fn get_call_argument<T: FromStr>(&self, key: &str) -> Result<T, WithReturnCode<Error>> {
+        let arg = self.call_arguments.get(key).ok_or(
+            WithReturnCode::new(Error::new(std::io::Error::new(std::io::ErrorKind::Other, format!(
+            "Call argument {} not found", key
+        ))), 4))?;
+        let res = arg.parse::<T>().map_err(|_| {
+            WithReturnCode::new(Error::new(std::io::Error::new(std::io::ErrorKind::Other, format!(
+                "Call argument {} not found", key
+            ))), 5)
+        })?;
+        Ok(res)
+    }
 }

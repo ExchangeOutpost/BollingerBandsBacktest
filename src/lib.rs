@@ -32,12 +32,14 @@ struct BacktestResult {
 
 #[plugin_fn]
 pub fn run(fin_data: FinData) -> FnResult<BacktestResult> {
-    let mut open_trade : Option<OpenTrade> = None;
     let candles = fin_data.get_candles("symbol_data")?;
-    let mut bb = BollingerBands::new(20, 2.0).expect("Failed to create Bollinger Bands");
+    let mut bb = BollingerBands::new(
+        fin_data.get_call_argument("period")?, fin_data.get_call_argument("multiplier")?)
+        .expect("Failed to create Bollinger Bands");
+    let sl: f64 = fin_data.get_call_argument("sl")?;
+    let tp: f64 = fin_data.get_call_argument("tp")?;
     let mut trades: Vec<ClosedTrade> = vec![];
-    let sl = 0.01;
-    let tp = 0.01;
+    let mut open_trade : Option<OpenTrade> = None;
 
     for candle in candles.iter().skip(20) {
         let v = bb.next(candle.close);
