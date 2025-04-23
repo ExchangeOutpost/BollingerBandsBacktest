@@ -33,7 +33,7 @@ struct BacktestResult {
 #[plugin_fn]
 pub fn run(fin_data: FinData) -> FnResult<BacktestResult> {
     let mut open_trade : Option<OpenTrade> = None;
-    let candles = fin_data.get_candles("symbold_data")?;
+    let candles = fin_data.get_candles("symbol_data")?;
     let mut bb = BollingerBands::new(20, 2.0).expect("Failed to create Bollinger Bands");
     let mut trades: Vec<ClosedTrade> = vec![];
     let sl = 0.01;
