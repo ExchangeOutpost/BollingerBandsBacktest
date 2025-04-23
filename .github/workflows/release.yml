@@ -13,7 +13,7 @@ jobs:
     - uses: actions/checkout@v4
     - run: rustup update
     - run: rustup target add wasm32-unknown-unknown
-    - run: cargo build --target wasm32-unknown-unknown
+    - run: cargo build --target wasm32-unknown-unknown --release
     
     - name: Upload Function
       uses: actions/upload-artifact@v4
