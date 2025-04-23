@@ -14,12 +14,6 @@ jobs:
     - run: rustup update
     - run: rustup target add wasm32-unknown-unknown
     - run: cargo build --target wasm32-unknown-unknown --release
-    
-    - name: Upload Function
-      uses: actions/upload-artifact@v4
-      with:
-        name: finfunc.wasm
-        path: target/wasm32-unknown-unknown/debug/finfunc_rust.wasm
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -38,7 +32,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        
-        asset_path: target/wasm32-unknown-unknown/debug/finfunc_rust.wasm
+        asset_path: target/wasm32-unknown-unknown/release/rust_function_base.wasm
         asset_name: finfunc.wasm
         asset_content_type: application/wasm
