@@ -1,7 +1,26 @@
 {
-    "function_name": "Rust Function Base",
-    "description": "A base for creating Rust functions",
-    "financial_data_keys": [],
-    "call_arguments_schema": {},
+    "function_name": "Bollinger Bands Backtest",
+    "description": "A backtest implementation for trading strategies using Bollinger Bands",
+    "financial_data_keys": [
+        "symbol_data"
+    ],
+    "call_arguments_schema": {
+        "period": {
+            "type": "integer",
+            "description": "The period for the Bollinger Bands"
+        },
+        "multiplier": {
+            "type": "number",
+            "description": "The multiplier for the Bollinger Bands"
+        },
+        "sl": {
+            "type": "number",
+            "description": "The stop loss percentage"
+        },
+        "tp": {
+            "type": "number",
+            "description": "The take profit percentage"
+        }
+    },
     "enforce_schemas": false
 }
