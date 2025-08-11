@@ -22,5 +22,5 @@
             "description": "The take profit percentage"
         }
     },
-    "enforce_schemas": false
+    "enforce_schemas": true
 }
