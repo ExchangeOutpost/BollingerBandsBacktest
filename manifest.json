@@ -5,22 +5,27 @@
         "symbol_data"
     ],
     "call_arguments_schema": {
-        "period": {
-            "type": "integer",
-            "description": "The period for the Bollinger Bands"
+        "type": "object",
+        "properties": {
+            "multiplier": {
+                "type": "number"
+            },
+            "period": {
+                "type": "integer"
+            },
+            "sl": {
+                "type": "number"
+            },
+            "tp": {
+                "type": "number"
+            }
         },
-        "multiplier": {
-            "type": "number",
-            "description": "The multiplier for the Bollinger Bands"
-        },
-        "sl": {
-            "type": "number",
-            "description": "The stop loss percentage"
-        },
-        "tp": {
-            "type": "number",
-            "description": "The take profit percentage"
-        }
+        "required": [
+            "multiplier",
+            "period",
+            "sl",
+            "tp"
+        ]
     },
     "enforce_schemas": true
 }
