@@ -8,19 +8,19 @@
         "type": "object",
         "properties": {
             "multiplier": {
-                "type": "number",
+                "type": ["number", "string"],
                 "default": 2.0
             },
             "period": {
-                "type": "integer",
+                "type": ["integer", "string"],
                 "default": 20
             },
             "sl": {
-                "type": "number",
+                "type": ["number", "string"],
                 "default": 0.02
             },
             "tp": {
-                "type": "number",
+                "type": ["number", "string"],
                 "default": 0.04
             }
         },
